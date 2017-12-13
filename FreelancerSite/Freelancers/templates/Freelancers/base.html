@@ -1,0 +1,25 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="{% static 'Freelancers/images/freelancer_logo.png' %}">
+
+        <title>Freelancer Site</title>
+        <link rel="stylesheet" href="{% static 'Freelancers/bootstrap-4.0/css/bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'Freelancers/style.css' %}">
+        <link rel="stylesheet" href="{% static 'Freelancers/projects.css' %}">
+        <script src="{% static 'Freelancers/popper.min.js' %}"></script>
+        <script src="{% static 'Freelancers/jquery.min.js' %}"></script>
+        <script src="{% static 'Freelancers/bootstrap-4.0/js/bootstrap.js' %}"></script>
+    </head>
+
+    <body>
+        {% include "Freelancers/header.html" %}
+
+        {% block main_content %}
+        {% endblock %}
+    </body>
+</html>

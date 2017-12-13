@@ -1,0 +1,31 @@
+* {
+    font-size: 12px;
+    /*font-family: Helvetica*/
+}
+.card {
+    box-shadow: 0 0 6px 0 rgba(0,0,0,.12), 0 4px 10px 0 rgba(0,0,0,.16);
+    border-radius: 10px;
+    width: 400px;
+    height: 280px;
+    border: 1px solid gray;
+    margin-left: 10px;
+    display: inline-block;
+    /*padding: 0px;*/
+}
+
+h1 {
+    font-weight: bold;
+    line-height: 0;
+    margin-bottom: 30px;
+    margin-top: 0px
+}
+.card a {
+    box-shadow: 2px 2px 5px grey
+}
+.my-4 {
+    margin-top: 0.45rem !important
+}
+
+.project-container {
+    margin-top: 100px;
+}

@@ -1,0 +1,22 @@
+{% extends 'Freelancers/base.html' %}
+{% block main_content %}
+
+{% if projects %}
+    <div class="project-container">
+    {% for project in projects %}
+    <div class="card jumbotron">
+        <h1 class="project-salary">{{project.salary}} Ft</h1>
+        <h2>{{project.name}}</h2>
+        <p class="lead">{{project.description}}</p>
+        <hr class="my-4">
+        <p class="description"><b>Skillek:</b> Java &bull; HTML &bull; CSS</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg project-link" href="#" role="button">Érdekel a projekt!</a>
+        </p>
+    </div>
+    {% endfor %}
+    </div>
+{% else %}
+    <h1>Még nincsenek projektek!</h1>
+{% endif %}
+{% endblock %}

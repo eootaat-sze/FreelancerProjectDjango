@@ -1,0 +1,111 @@
+{% extends 'Freelancers/base.html' %}
+{% block main_content %}
+<main role="main">
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container main-container">
+          <h1 class="display-3">Freelancer</h1>
+          <p>Olyan személy, aki otthon dolgozhat saját maga választott projekteken, jó fizetésért!</p>
+          <p><a class="btn btn-primary btn-lg" href="#" role="button">Tudj meg többet &raquo;</a></p>
+        </div>
+      </div>
+
+      <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="col-md-4">
+            <h2>Freelancer</h2>
+            <p>Jó fejlesztő vagy, vagy csak programozni szeretnél? Zavar a kötött munkahelyi légkör? Vagy esetleg csak nem találtál munkát?<br><strong>Legyél freelancer!</strong></p>
+            <!--<p><a class="btn btn-secondary" href="#" role="button">Freelancer leszek &raquo;</a></p>-->
+            <button class="btn btn-secondary" data-toggle="modal" data-target="#freelancer_reg">Freelancer leszek &raquo;</button>
+          </div>
+          <div class="col-md-4">
+            <h2>Munkáltató</h2>
+            <p>Van egy programozói feladatod, de nincs, aki elvégezze neked vagy a cégednek?<br>Bérelj fel freelancer-öket a munkára...<br><strong>Legyél munkáltató!</strong></p>
+            <!--<p><a class="btn btn-secondary" href="#" role="button">Szeretnék felvenni freelancer-t &raquo;</a></p>-->
+            <button class="btn btn-secondary" data-toggle="modal" data-target="#employer_reg">Szeretnék felvenni freelancer-t &raquo;</button>
+          </div>
+          <div class="col-md-4">
+            <h2>Projektek</h2>
+            <p>Nem vagy biztos benne, hogy neked való munkát találnál? Munkát adnál, de nem tudod, hogyan épül fel egy projekt az oldalon?<br><strong>Böngéssz a projektek között!</strong></p>
+            <p><a class="btn btn-secondary" href="{% url 'freelancers:projects' %}" role="button">Megnézem a projekteket &raquo;</a></p>
+          </div>
+        </div>
+{% if error_message %}
+  <h2>{{error_message}}</h2>
+{% endif %}
+
+{% if current_user %}
+    <h2>User: {{current_user}}</h2>
+{% endif %}
+{% for item in messages %}
+    <h2>{{item}}</h2>
+{% endfor %}
+      </div> <!-- /container -->
+
+      <div class="modal fade" id="freelancer_reg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Freelancer regisztráció</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form action="{% url 'freelancers:fre_reg' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" name="fullname" class="form-control" id="fullname" placeholder="Teljes név" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" class="form-control" id="emailaddress" aria-describedby="emailHelp" placeholder="Email cím" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Jelszó" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password2" class="form-control" id="password2" placeholder="Jelszó még egyszer">
+                    </div>
+                    <div class="form-group">
+                      <input type="text" name="skills" class="form-control" id="skills" placeholder="Skillek vesszővel elválasztva. Például: HTML, CSS, JS, ...">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Regisztrálok!</button>
+                </form>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <div class="modal fade" id="employer_reg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Munkáltató regisztráció</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form action="{% url 'freelancers:emp_reg' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" name="fullname" class="form-control" id="fullname" placeholder="Teljes név" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" class="form-control" id="emailaddress" aria-describedby="emailHelp" placeholder="Email cím" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Jelszó" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password2" class="form-control" id="password2" placeholder="Jelszó még egyszer">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Regisztrálok!</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+  </main>
+{% endblock %}

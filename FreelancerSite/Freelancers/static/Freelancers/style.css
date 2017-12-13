@@ -1,0 +1,17 @@
+* {
+    font-family: Helvetica;
+    font-size: 12px;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+}
+
+.main-container {
+    margin-top: 70px;
+}
+
+.project-btn {
+    margin-right: 10px;
+}
