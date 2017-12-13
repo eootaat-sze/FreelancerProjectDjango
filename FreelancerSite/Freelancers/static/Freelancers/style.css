@@ -15,3 +15,13 @@
 .project-btn {
     margin-right: 10px;
 }
+
+.user-container {
+    margin-top: 100px;
+    width: 500px;
+}
+
+.user-list-item {
+    margin-bottom: 5px;
+    margin-left: 10px;
+}

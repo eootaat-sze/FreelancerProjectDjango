@@ -1,0 +1,23 @@
+{% extends 'Freelancers/base.html' %}
+{% block main_content %}
+
+{% if freelancer_list %}
+<div class="user-container">
+    <h1>A regisztrált freelancer-ök:</h1>
+    <div class="list-group">
+        {% for fl in freelancer_list %}
+          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active user-list-item">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1"><strong>Freelancer neve:</strong> {{fl.fullname}}</h5>
+            </div>
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1"><strong>Freelancer email címe:</strong> {{fl.email}}</h5>
+            </div>
+            <small>Skills: {{fl.skills}}</small>
+          </a>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'Freelancers/base.html' %}
+{% block main_content %}
+
+{% if employer_list %}
+<div class="user-container">
+    <h1>A regisztrált munkaadók:</h1>
+    <div class="list-group">
+        {% for emp in employer_list %}
+          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active user-list-item">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1"><strong>Munkaadó neve:</strong> {{emp.fullname}}</h5>
+            </div>
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1"><strong>Email címe:</strong> {{emp.email}}</h5>
+            </div>
+          </a>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

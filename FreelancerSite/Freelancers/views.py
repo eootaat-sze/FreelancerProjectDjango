@@ -10,7 +10,7 @@ from .models import Employer, Freelancer, Project
 def index(request):
     username = request.session.get('current_user')
     error_message = request.session.get('error_message')
-    messages = request.session.get('messages')
+    # messages = request.session.get('messages')
     role = request.session.get('role')
     email = request.session.get('email')
 
@@ -23,7 +23,7 @@ def index(request):
     return render(request, 'Freelancers/index.html', {
         'current_user': username,
         'error_message': error_message,
-        'messages': messages,
+        # 'messages': messages,
         'role': role,
         'email': email
     })
@@ -40,15 +40,16 @@ def projects(request):
     return render(request, 'Freelancers/all_projects.html', {'projects': all_projects})
 
 
-def freelancers(request):
+def freelancer_list(request):
     all_freelancers = Freelancer.objects.all()
-    text = ""
 
-    for item in all_freelancers:
-        text += str(item)
-        text += "\n"
+    return render(request, 'Freelancers/freelancer_list.html', {'freelancer_list': all_freelancers})
 
-    return HttpResponse("The freelancers are: " + text)
+
+def employer_list(request):
+    all_employers = Employer.objects.all()
+
+    return render(request, 'Freelancers/employer_list.html', {'employer_list': all_employers})
 
 
 # A freelancer és az employer is ugyanazon a formon lép be.
@@ -153,9 +154,7 @@ def emp_projects(request, emp_email):
 
 
 def fl_projects(request, fl_email):
-    print('fl_id', fl_email)
-
-    return HttpResponse('Whatever... again')
+    return render(request, 'Freelancers/fl_projects.html')
 
 
 def logout(request):
